@@ -1,0 +1,42 @@
+
+# File Sytem Tasks [filesystem]
+## Payload containing files the backend is tracking - Server [file-listing]
+
++ Transmission
+
+    {
+        "files": ["path/to/file1", "path/to/file2"]
+    }
+
+## Payload containing partical file-listing update - Server [file-listing/partial]
+
++ Transmission
+
+    {
+        "newFiles": ["path/to/file1", "path/to/file2"],
+        "removedFiled": ["path/to/removedFile"],
+        "renamedFiles": {
+            "path/to/prevName": "path/to/newName"
+        }
+    }
+
+# Things related to connected clients [user-management]
+## Access Restrictions - Client [access]
+
+Client may request that the server changes access to certain parts of the system.
+
++ Parameters
+    + permissions - Array of permissions you want enabled.  Choose from:
+        read-only, unrestricted, admin, planters-nuts
+
++ Transmission
+
+    {
+        "permissions": ["read-only"]
+    }
+
++ Response
+
+    {
+        "Status": "OK"
+    }

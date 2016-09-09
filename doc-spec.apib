@@ -1,0 +1,69 @@
+In order to be consistent about the documentation of the API over sockets, this doc has been provided.
+
+In the API, these are the to a transmission:
+
+ * type
+ * payload
+ * trackingID (optional)
+
+Type will be a string indicating what sort of things will be in the payload.  Because the reply to a payload, if any, will not be linked in any way to the original request, an optional trackingID can be sent that will be in whatever response payload returns.  The socket API used should probably have ways to easily hold onto a request and reply to the original without passing around an integer or hash.
+
+I would like to model this after API blueprint, but we'll have to evolve it.
+
+These will probably be the API 'endpoint' types.
+
+ * payload - One-way data dumps to one or more clients.  What the client does with this information is up to them.
+ * request/reponse - Two-way request/reply from client to the server.  Response may be a multi-client payload
+
+Types should be scoped to the subsystem they are a part of.
+For example:
+ * filesystem/file-listing
+ * user-management/client-list
+ * client-input/keyPress
+
+
+Things still missing:
+ * Good way to indicate whether an 'endpoint' is Client=>Server, Server=>Client, or both
+ * Flag indicatinging that a transmission will be multiplexed to all clients or not
+
+
+What the spec should look like
+==============================
+
+# File Sytem Tasks [filesystem]
+## Payload containing files the backend is tracking - Server [file-listing]
+
++ Transmission
+
+    {
+        "files": ["path/to/file1", "path/to/file2"]
+    }
+
+## Payload containing partical file-listing update - Server [file-listing/partial]
+
++ Transmission
+
+    {
+        "newFiles": ["path/to/file1", "path/to/file2"],
+        "removedFiled": ["path/to/removedFile"],
+        "renamedFiles": {
+            "path/to/prevName": "path/to/newName"
+        }
+    }
+
+# Things related to connected clients [user-management]
+## Access Restrictions - Client [access]
+
+Client may request that the server changes access to certain parts of the system.
+
++ Transmission
+
+    {
+        "permissions": ["read-only"]
+    }
+
++ Response
+
+    {
+        "Status": "OK"
+    }

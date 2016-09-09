@@ -1,0 +1,23 @@
+{
+  "name": "socket-blueprint",
+  "version": "1.0.0",
+  "description": "",
+  "main": ".eslintrc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jacobgardner/socket-blueprint.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jacobgardner/socket-blueprint/issues"
+  },
+  "homepage": "https://github.com/jacobgardner/socket-blueprint#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "rollup-stream": "^1.12.0"
+  }
+}
