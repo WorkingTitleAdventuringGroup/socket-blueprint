@@ -6,7 +6,7 @@ const source = require('vinyl-source-stream');
 const buffer = require('vinyl-buffer');
 const sourcemaps = require('gulp-sourcemaps');
 
-const SOURCE_FILES = ['./lib/**/*.js'];
+const SOURCE_FILES = ['./lib/**/*.js', '.babelrc'];
 
 gulp.task('scripts', () => {
     rollup({
@@ -40,3 +40,8 @@ gulp.task('scripts', () => {
     }));
 });
 
+gulp.task('default', ['scripts']);
+
+gulp.task('watch', ['scripts'], () => {
+    gulp.watch(SOURCE_FILES, ['scripts']);
+});
