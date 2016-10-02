@@ -4,21 +4,21 @@
 
 + Transmission
 
-    {
-        "files": ["path/to/file1", "path/to/file2"]
-    }
+        {
+            "files": ["path/to/file1", "path/to/file2"]
+        }
 
 ## Payload containing partical file-listing update - Server [file-listing/partial]
 
 + Transmission
 
-    {
-        "newFiles": ["path/to/file1", "path/to/file2"],
-        "removedFiled": ["path/to/removedFile"],
-        "renamedFiles": {
-            "path/to/prevName": "path/to/newName"
+        {
+            "newFiles": ["path/to/file1", "path/to/file2"],
+            "removedFiled": ["path/to/removedFile"],
+            "renamedFiles": {
+                "path/to/prevName": "path/to/newName"
+            }
         }
-    }
 
 # Things related to connected clients [user-management]
 ## Access Restrictions - Client [access]
@@ -31,12 +31,12 @@ Client may request that the server changes access to certain parts of the system
 
 + Transmission
 
-    {
-        "permissions": ["read-only"]
-    }
+        {
+            "permissions": ["read-only"]
+        }
 
 + Response
 
-    {
-        "Status": "OK"
-    }
+        {
+            "Status": "OK"
+        }
